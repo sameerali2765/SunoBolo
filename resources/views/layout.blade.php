@@ -76,15 +76,14 @@
                                     <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                                     <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                                 </ul>
-
-                                <div class="lang-select">
-                                    <select>
-                                        <option>Eng</option>
-                                        <option>Spa</option>
-                                        <option>Ara</option>
-                                        <option>Fre</option>
-                                    </select>
-                                </div>
+                                @if(Route::has('login'))
+                                @auth
+                             
+                                @else
+                                    <a href="{{ route ('login')}}"class="btn btn-light btn-sm"Style="width:23%; padding-right:65px;" >Login</a>
+                                    <a href="{{ route ('register')}}"class="btn btn-light btn-sm"Style="width:32%;padding-right: 50px; "  >Register</a>
+                                @endauth
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -191,8 +190,14 @@
                                             </div>
                                         </div>
                                     </div>
-    
-                                    <a href="{{ url ('contact')}}" class="btn btn-primary">Contact Us</a>
+                                    @if(Route::has('login'))
+                                @auth
+                                <a href="{{ url ('/home')}}" class="btn btn-primary">Dashboard</a>
+                                @else
+                                <a href="{{ url ('contact')}}" class="btn btn-primary">Contact Us</a>
+                                @endauth
+                                @endif
+                                   
                                 </div>
                             </div>
                         </nav>
